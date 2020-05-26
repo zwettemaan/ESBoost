@@ -44,126 +44,126 @@ var gFontCache;
 (function() {
 
 var gOmitAttrList = [ 
-	"eventListeners",
-	"events",
-	"parent",
-	"properties"
+    "eventListeners",
+    "events",
+    "parent",
+    "properties"
 ];
 
 var gOmitAttrs = {};
 for (var attrIdx = 0; attrIdx < gOmitAttrList.length; attrIdx++) {
-	gOmitAttrs[gOmitAttrList[attrIdx]] = true;
+    gOmitAttrs[gOmitAttrList[attrIdx]] = true;
 }
 
 if (! gFontCache) {
-	loadFontCache();
+    loadFontCache();
 }
 
 function getFontEntry(font) {
-	var fontEntry = {};
-	for (var attr in font) {
-		if (! gOmitAttrs[attr]) {
-			fontEntry[attr] = font[attr];
-		}
-	}	
-	return fontEntry;
+    var fontEntry = {};
+    for (var attr in font) {
+        if (! gOmitAttrs[attr]) {
+            fontEntry[attr] = font[attr];
+        }
+    }   
+    return fontEntry;
 }
 
 getFontListJSONByFontPostscriptName = function(fontPostscriptName) {
-	
-	var retVal;
+    
+    var retVal;
 
-	try {
-		var fontList = gFontCache.byFontPostscriptName[fontPostscriptName];
-     	retVal = JSON.stringify(fontList);
-	}
-	catch (err) {
-	}
-	
-	return retVal;
+    try {
+        var fontList = gFontCache.byFontPostscriptName[fontPostscriptName];
+        retVal = JSON.stringify(fontList);
+    }
+    catch (err) {
+    }
+    
+    return retVal;
 }
 
 getFontListJSONByFontPlatformName = function(fontPlatformName) {
-	
-	var retVal;
+    
+    var retVal;
 
-	try {
-		var fontList = gFontCache.byFontPlatformName[fontPlatformName];
-     	retVal = JSON.stringify(fontList);
-	}
-	catch (err) {
-	}
-	
-	return retVal;
+    try {
+        var fontList = gFontCache.byFontPlatformName[fontPlatformName];
+        retVal = JSON.stringify(fontList);
+    }
+    catch (err) {
+    }
+    
+    return retVal;
 }
 
 getFontListJSONByFontFullNameNative = function(fontFullNameNative) {
-	
-	var retVal;
+    
+    var retVal;
 
-	try {
-		var fontList = gFontCache.byFontFullNameNative[fontFullNameNative];
-     	retVal = JSON.stringify(fontList);
-	}
-	catch (err) {
-	}
-	
-	return retVal;
+    try {
+        var fontList = gFontCache.byFontFullNameNative[fontFullNameNative];
+        retVal = JSON.stringify(fontList);
+    }
+    catch (err) {
+    }
+    
+    return retVal;
 }
 
 getFontListJSONByFontFullName = function(fontFullName) {
-	
-	var retVal;
+    
+    var retVal;
 
-	try {
-		var fontList = gFontCache.byFontFullName[fontFullName];
-     	retVal = JSON.stringify(fontList);
-	}
-	catch (err) {
-	}
-	
-	return retVal;
+    try {
+        var fontList = gFontCache.byFontFullName[fontFullName];
+        retVal = JSON.stringify(fontList);
+    }
+    catch (err) {
+    }
+    
+    return retVal;
 }
 
 getFontListJSONByFontFamily = function(fontFamily) {
-	
-	var retVal;
+    
+    var retVal;
 
-	try {
-		var fontList = gFontCache.byFontFamily[fontFamily];
-     	retVal = JSON.stringify(fontList);
-	}
-	catch (err) {
-	}
-	
-	return retVal;
+    try {
+        var fontList = gFontCache.byFontFamily[fontFamily];
+        retVal = JSON.stringify(fontList);
+    }
+    catch (err) {
+    }
+    
+    return retVal;
 }
 
 getFontListJSONByFontName = function(fontName) {
-	
-	var retVal;
+    
+    var retVal;
 
-	try {
-		var fontList = gFontCache.byFontName[fontName];
-     	retVal = JSON.stringify(fontList);
-	}
-	catch (err) {
-	}
-	
-	return retVal;
+    try {
+        var fontList = gFontCache.byFontName[fontName];
+        retVal = JSON.stringify(fontList);
+    }
+    catch (err) {
+    }
+    
+    return retVal;
 }
 
 function loadFontCache() {
     
-	gFontCache = {};
+    gFontCache = {};
     
-	gFontCache.byFontName = {};
-	gFontCache.byFontFamily = {};
-	gFontCache.byFontFullName = {};
-	gFontCache.byFontFullNameNative = {};
-	gFontCache.byFontPlatformName = {};
-	gFontCache.byFontPostscriptName = {};
-	
+    gFontCache.byFontName = {};
+    gFontCache.byFontFamily = {};
+    gFontCache.byFontFullName = {};
+    gFontCache.byFontFullNameNative = {};
+    gFontCache.byFontPlatformName = {};
+    gFontCache.byFontPostscriptName = {};
+    
     function addToList(table, key, entry) {
         var list = table[key];
         if (! list) {
@@ -173,46 +173,46 @@ function loadFontCache() {
         list.push(entry);
     }
 
-	var fontIdx = app.fonts.length - 1;
-	while (fontIdx >= 0) {
-		try {
-			var font = app.fonts.item(fontIdx);
-              var fontEntry = getFontEntry(font);
-              try {
-                  addToList(gFontCache.byFontName, fontEntry.name, fontEntry);
-              }
-              catch (err) {
-              }
-              try {
-	    		addToList(gFontCache.byFontFamily, fontEntry.fontFamily, fontEntry);
-              }
-              catch (err) {
-              }
-              try {
-	  	  	addToList(gFontCache.byFontFullName, fontEntry.fullName, fontEntry);
-              }
-              catch (err) {
-              }
-              try {
-  		  	addToList(gFontCache.byFontFullNameNative, fontEntry.fullNameNative, fontEntry);
-              }
-              catch (err) {
-              }
-              try {
-  		  	addToList(gFontCache.byFontPlatformName, fontEntry.platformName, fontEntry);
-              }
-              catch (err) {
-              }
-              try {
-  		  	addToList(gFontCache.byFontPostscriptName, fontEntry.postscriptName, fontEntry);
-              }
-              catch (err) {
-              }
-		}
-		catch (err) {
-		}
-		fontIdx--;	
-	}
+    var fontIdx = app.fonts.length - 1;
+    while (fontIdx >= 0) {
+        try {
+            var font = app.fonts.item(fontIdx);
+            var fontEntry = getFontEntry(font);
+            try {
+                addToList(gFontCache.byFontName, fontEntry.name, fontEntry);
+            }
+            catch (err) {
+            }
+            try {
+                addToList(gFontCache.byFontFamily, fontEntry.fontFamily, fontEntry);
+            }
+            catch (err) {
+            }
+            try {
+                addToList(gFontCache.byFontFullName, fontEntry.fullName, fontEntry);
+            }
+            catch (err) {
+            }
+            try {
+                addToList(gFontCache.byFontFullNameNative, fontEntry.fullNameNative, fontEntry);
+            }
+            catch (err) {
+            }
+            try {
+                addToList(gFontCache.byFontPlatformName, fontEntry.platformName, fontEntry);
+            }
+            catch (err) {
+            }
+            try {
+                addToList(gFontCache.byFontPostscriptName, fontEntry.postscriptName, fontEntry);
+            }
+            catch (err) {
+            }
+        }
+        catch (err) {
+        }
+        fontIdx--;  
+    }
 }
 
 })();

@@ -33,12 +33,12 @@ REM ---------------
 CALL setPath.bat
 
 IF EXIST %TEMP%\runscriptoutput.txt (
-	DEL %TEMP%\runscriptoutput.txt
+    DEL %TEMP%\runscriptoutput.txt
 )
 
 sampleclient -host localhost:16383 %1 "RUNSCRIPT_DIR=%CD%"
 
 IF EXIST %TEMP%\runscriptoutput.txt (
-	TYPE %TEMP%\runscriptoutput.txt
-	DEL %TEMP%\runscriptoutput.txt
+    TYPE %TEMP%\runscriptoutput.txt
+    DEL %TEMP%\runscriptoutput.txt
 )

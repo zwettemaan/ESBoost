@@ -28,9 +28,14 @@
 //
 // ---------------
 
+
 function output(msg) {
-	var f = File(Folder.temp + "/runscriptOutput.txt");
-	f.open("a");
-	f.writeln(msg);
-	f.close();
+
+    // $.writeln(msg); // to write to ESTK console
+
+    var f = File(Folder.temp + "/runscriptOutput.txt");
+    f.open("a");
+    f.writeln(msg);
+    f.close();
+
 }
