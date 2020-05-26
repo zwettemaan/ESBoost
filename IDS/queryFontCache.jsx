@@ -52,7 +52,7 @@ app.doScript("//@include \"" + $.global.MODULE_DIR + "/fontCacheAPI.jsx\"");
 
 var clearTimer = $.hiresTimer;
 var list = FontCache.getFontListByFontPostscriptName("ArialMT");
-endMicroseconds = $.hiresTimer;
+var endMicroseconds = $.hiresTimer;
 if (list) {
     output("ArialMT count = " + list.length + ". Time lapsed (ms)" + Math.floor(endMicroseconds / 1000 + 0.5));
 }
