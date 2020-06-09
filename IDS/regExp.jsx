@@ -1,4 +1,4 @@
-﻿//
+//
 // regExp.jsx - a script for Adobe InDesign.
 //
 // Part of a presentation for the Creative Developer Summit 2020
@@ -42,7 +42,7 @@ if ($.fileName) {
 }
 else {
     $.global.RUNSCRIPT_DIR = Folder(app.scriptArgs.getValue("RUNSCRIPT_DIR"));
-    $.global.MODULE_DIR = Folder($.global.RUNSCRIPT_DIR);
+	$.global.MODULE_DIR = Folder($.global.RUNSCRIPT_DIR);
 }
 //
 // End pre-amble
@@ -58,7 +58,7 @@ var clearTimer;
 var endMicroseconds;
 var targetString = "mysamplestring";
 var re = /A{2,3}.*(abd|def|ghi)/;
-    
+	
 for (var sampleIdx = 1; sampleIdx <= sampleCount; sampleIdx++) {
     
     clearTimer = $.hiresTimer;
@@ -73,13 +73,13 @@ for (var sampleIdx = 1; sampleIdx <= sampleCount; sampleIdx++) {
 }
 
 function patternMatch_LiteralRegexp() {
-    for (var idx = 0; idx < loopCount; idx++) {
-        var match = targetString.match(/A{2,3}.*(abd|def|ghi)/);
-    }
+	for (var idx = 0; idx < loopCount; idx++) {
+		var match = targetString.match(/A{2,3}.*(abd|def|ghi)/);
+	}
 }
 
 function patternMatch_CachedRegexp() {
-    for (var idx = 0; idx < loopCount; idx++) {
-        var match = targetString.match(re);
-    }
+	for (var idx = 0; idx < loopCount; idx++) {
+		var match = targetString.match(re);
+	}
 }

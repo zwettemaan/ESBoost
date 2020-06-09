@@ -1,4 +1,4 @@
-﻿//
+//
 // fontCacheAPI.jsx - a script for Adobe InDesign.
 //
 // API wrapper for fontCache.jsx

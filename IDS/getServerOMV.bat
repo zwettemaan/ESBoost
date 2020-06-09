@@ -1,9 +1,9 @@
 @ECHO OFF
 
 REM 
-REM Run an InDesign Server ExtendScript script from the command line
+REM Install the InDesign CC 2019 server OMV so you can use it from ExtendScript Toolkit
 REM
-REM runScript.bat - a script for Windows
+REM getServerOMV.bat - a script for Windows
 REM
 REM Part of a presentation for the Creative Developer Summit 2020
 REM
@@ -30,15 +30,7 @@ REM months.
 REM
 REM ---------------
 
-CALL setPath.bat
+CALL runScript.bat "%CD%\getServerOMV.jsx"
 
-IF EXIST %TEMP%\runscriptoutput.txt (
-	DEL %TEMP%\runscriptoutput.txt
-)
-
-sampleclient -host localhost:16383 %1 "RUNSCRIPT_DIR=%CD%"
-
-IF EXIST %TEMP%\runscriptoutput.txt (
-	TYPE %TEMP%\runscriptoutput.txt
-	DEL %TEMP%\runscriptoutput.txt
-)
+REN "%USERPROFILE%\Desktop\server.xml" omv$indesignserver-14.0$14.0.xml
+MOVE "%USERPROFILE%\Desktop\omv$indesignserver-14.0$14.0.xml" "%APPDATA%\Adobe\ExtendScript Toolkit\4.0"

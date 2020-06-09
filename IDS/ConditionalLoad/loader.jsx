@@ -1,4 +1,4 @@
-﻿//
+//
 // loader.jsx - a helper script for Adobe InDesign or InDesign Server.
 //
 // Module loader which can strip unused LOG... calls from modules as they are loaded
@@ -33,13 +33,13 @@ var loadModule;
 
 (function() {
 if (! loadModule) {
-    
-    var REGEXP_LOGENTRYEXIT = /LOG\.log(Entry|Exit)\(\".*?\"\)/g;
-    var REGEXP_LOGERROR = /LOG\.logError\(\".*?\"\)/g;
-    var REGEXP_LOGWARNING = /LOG\.logWarning\(\".*?\"\)/g;
-    var REGEXP_LOGNOTE = /LOG\.logNote\(\".*?\"\)/g;
-    var REGEXP_LOGTRACE = /LOG\.logTrace\(\".*?\"\)/g;
-    
+	
+	var REGEXP_LOGENTRYEXIT = /LOG\.log(Entry|Exit)\(\".*?\"\)/g;
+	var REGEXP_LOGERROR = /LOG\.logError\(\".*?\"\)/g;
+	var REGEXP_LOGWARNING = /LOG\.logWarning\(\".*?\"\)/g;
+	var REGEXP_LOGNOTE = /LOG\.logNote\(\".*?\"\)/g;
+	var REGEXP_LOGTRACE = /LOG\.logTrace\(\".*?\"\)/g;
+	
     loadModule = function(in_moduleName) {
         var upperCaseModuleName = in_moduleName.toUpperCase();
         if (upperCaseModuleName != "LOG") {
@@ -60,33 +60,33 @@ if (! loadModule) {
             $.global.MODULE_CONTAINER.__LOADING_MODULE = $.global.MODULE_CONTAINER[upperCaseModuleName];
             $.global.MODULE_DIR = File($.fileName).parent;
             var moduleScriptFile = File($.global.MODULE_DIR + "/" + in_moduleName + ".jsx");
-            moduleScriptFile.encoding = "UTF8";
-            moduleScriptFile.open("r");
-            var moduleScript = moduleScriptFile.read();
-            moduleScriptFile.close();
-            var LOG = $.global.MODULE_CONTAINER.LOG;
-            if (upperCaseModuleName != "LOG" && LOG) {
-                if (LOG.getLogEntryExit && ! LOG.getLogEntryExit()) {
-                    moduleScript = moduleScript.replace(REGEXP_LOGENTRYEXIT, ";");
-                }
-                if (LOG.getLogLevel) {
-                    var logLevel = LOG.getLogLevel();
-                    if (logLevel < LOG.LOG_ERROR) {
-                        moduleScript = moduleScript.replace(REGEXP_LOGERROR,  ";");
-                    }
-                    if (logLevel < LOG.LOG_WARNING) {
-                        moduleScript = moduleScript.replace(REGEXP_LOGWARNING,";");
-                    }
-                    if (logLevel < LOG.LOG_NOTE) {
-                        moduleScript = moduleScript.replace(REGEXP_LOGNOTE, ";");
-                    }
-                    if (logLevel < LOG.LOG_TRACE) {
-                        moduleScript = moduleScript.replace(REGEXP_LOGTRACE, ";");
-                    }
-                }
-            }
-            
-            app.doScript(moduleScript);
+			moduleScriptFile.encoding = "UTF8";
+			moduleScriptFile.open("r");
+			var moduleScript = moduleScriptFile.read();
+			moduleScriptFile.close();
+			var LOG = $.global.MODULE_CONTAINER.LOG;
+			if (upperCaseModuleName != "LOG" && LOG) {
+				if (LOG.getLogEntryExit && ! LOG.getLogEntryExit()) {
+					moduleScript = moduleScript.replace(REGEXP_LOGENTRYEXIT, ";");
+				}
+				if (LOG.getLogLevel) {
+					var logLevel = LOG.getLogLevel();
+					if (logLevel < LOG.LOG_ERROR) {
+						moduleScript = moduleScript.replace(REGEXP_LOGERROR,  ";");
+					}
+					if (logLevel < LOG.LOG_WARNING) {
+						moduleScript = moduleScript.replace(REGEXP_LOGWARNING,";");
+					}
+					if (logLevel < LOG.LOG_NOTE) {
+						moduleScript = moduleScript.replace(REGEXP_LOGNOTE, ";");
+					}
+					if (logLevel < LOG.LOG_TRACE) {
+						moduleScript = moduleScript.replace(REGEXP_LOGTRACE, ";");
+					}
+				}
+			}
+			
+			app.doScript(moduleScript);
 
             $.global.MODULE_CONTAINER.__LOADING_MODULE = savedModuleLoading;
         }

@@ -1,4 +1,4 @@
-﻿//
+//
 // utils.jsx - a module script for Adobe InDesign.
 //
 // Just an output bottleneck function for outputting some strings
@@ -29,7 +29,7 @@
 // ---------------
 
 if (! loadModule) {
-    app.doScript("//@include \"" + $.global.MODULE_DIR + "/loader.jsx\"");
+	app.doScript("//@include \"" + $.global.MODULE_DIR + "/loader.jsx\"");
 }
 
 (function() {
@@ -40,12 +40,11 @@ var UTILS = CONTAINER.__LOADING_MODULE;
 var LOG = loadModule("log");
 
 UTILS.output = function(msg) {
-    // $.writeln(msg); // to output to ESTK console
-    // Do not call LOG... here - LOG... calls this function for its own logging
-    var f = File(Folder.temp + "/runscriptOutput.txt");
-    f.open("a");
-    f.writeln(msg);
-    f.close();
+	// Do not call LOG... here - LOG... calls this function for its own logging
+	var f = File(Folder.temp + "/runscriptOutput.txt");
+	f.open("a");
+	f.writeln(msg);
+	f.close();
 };
 
 })();

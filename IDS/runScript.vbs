@@ -1,9 +1,7 @@
-@ECHO OFF
-
 REM 
 REM Run an InDesign Server ExtendScript script from the command line
 REM
-REM runScript.bat - a script for Windows
+REM runScript.vbs - a VBScript for Windows
 REM
 REM Part of a presentation for the Creative Developer Summit 2020
 REM
@@ -30,15 +28,20 @@ REM months.
 REM
 REM ---------------
 
-CALL setPath.bat
+Set theApp = CreateObject("InDesignServer.Application")
 
-IF EXIST %TEMP%\runscriptoutput.txt (
-	DEL %TEMP%\runscriptoutput.txt
-)
+Dim scriptPath
+Dim scriptPath2Prefix
 
-sampleclient -host localhost:16383 %1 "RUNSCRIPT_DIR=%CD%"
+scriptPath = WScript.arguments(0)
+scriptPath2Prefix = Left(scriptPath,2)
 
-IF EXIST %TEMP%\runscriptoutput.txt (
-	TYPE %TEMP%\runscriptoutput.txt
-	DEL %TEMP%\runscriptoutput.txt
-)
+if Mid(scriptPath,2, 1) <> ":" and scriptPath2Prefix <> "\\" and scriptPath2Prefix <> "//" then
+    Dim WshShell, strCurDir
+    Set WshShell = CreateObject("WScript.Shell")
+    strCurDir    = WshShell.CurrentDirectory
+    scriptPath = strCurDir + "\" + scriptPath
+end if
+
+theApp.doScript scriptPath, 1246973031
+

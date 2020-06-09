@@ -1,4 +1,4 @@
-﻿//
+//
 // log.jsx - a loadable module script for Adobe InDesign or InDesign Server.
 //
 // Logging functions
@@ -29,7 +29,7 @@
 // ---------------
 
 if (! loadModule) {
-    app.doScript("//@include \"" + $.global.MODULE_DIR + "/loader.jsx\"");
+	app.doScript("//@include \"" + $.global.MODULE_DIR + "/loader.jsx\"");
 }
 
 (function() {
@@ -38,7 +38,7 @@ var CONTAINER = $.global.MODULE_CONTAINER;
 var LOG = CONTAINER.__LOADING_MODULE;
 
 var UTILS = loadModule("utils");
-    
+	
 LOG.LOG_NONE = 0;
 LOG.LOG_ERROR = 1;
 LOG.LOG_WARNING = 2;
@@ -49,59 +49,59 @@ var logLevel = LOG.LOG_WARNING;
 var logEntryExit = 0;
 
 LOG.getLogEntryExit = function() {
-    return logEntryExit;
+	return logEntryExit;
 };
 
 LOG.getLogLevel = function() {
-    return logLevel;
+	return logLevel;
 };
 
 LOG.logEntry = function(in_ftnName) {
-    if (logEntryExit) {
-        LOG.logTrace("ENTRY: " + in_ftnName);
-    }
+	if (logEntryExit) {
+		LOG.logTrace("ENTRY: " + in_ftnName);
+	}
 };
 
 LOG.logError = function(in_msg) {
-    if (logLevel >= LOG.LOG_ERROR) {
-        LOG.logMessage("ERROR: " + in_msg);
-    }
+	if (logLevel >= LOG.LOG_ERROR) {
+		LOG.logMessage("ERROR: " + in_msg);
+	}
 };
 
 LOG.logExit = function(in_ftnName) {
-    if (logEntryExit) {
-        LOG.logTrace("EXIT : " + in_ftnName);
-    }
+	if (logEntryExit) {
+		LOG.logTrace("EXIT : " + in_ftnName);
+	}
 };
 
 LOG.logMessage = function(in_msg) {
-    UTILS.output(in_msg);
+	UTILS.output(in_msg);
 };
 
 LOG.logNote = function(in_msg) {
-    if (logLevel >= LOG.LOG_NOTE) {
-        LOG.logMessage("NOTE : " + in_msg);
-    }
+	if (logLevel >= LOG.LOG_NOTE) {
+		LOG.logMessage("NOTE : " + in_msg);
+	}
 };
 
 LOG.logTrace = function(in_msg) {
-    if (logLevel >= LOG.LOG_TRACE) {
-        LOG.logMessage("TRACE: " +in_msg);
-    }
+	if (logLevel >= LOG.LOG_TRACE) {
+		LOG.logMessage("TRACE: " +in_msg);
+	}
 };
 
 LOG.logWarning = function(in_msg) {
-    if (logLevel >= LOG.LOG_WARNING) {
-        LOG.logMessage("WARN : " + in_msg);
-    }
+	if (logLevel >= LOG.LOG_WARNING) {
+		LOG.logMessage("WARN : " + in_msg);
+	}
 };
 
 LOG.setLogEntryExit = function(in_enableLogEntryExit) {
-    logEntryExit = in_enableLogEntryExit;
+	logEntryExit = in_enableLogEntryExit;
 };
 
 LOG.setLogLevel = function(in_level) {
-    logLevel = in_level;
+	logLevel = in_level;
 };
 
 })();

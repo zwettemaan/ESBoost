@@ -1,4 +1,4 @@
-﻿//
+//
 // domLightly.jsx - a script for Adobe InDesign.
 //
 // Part of a presentation for the Creative Developer Summit 2020
@@ -41,7 +41,7 @@ if ($.fileName) {
 }
 else {
     $.global.RUNSCRIPT_DIR = Folder(app.scriptArgs.getValue("RUNSCRIPT_DIR"));
-    $.global.MODULE_DIR = Folder($.global.RUNSCRIPT_DIR);
+	$.global.MODULE_DIR = Folder($.global.RUNSCRIPT_DIR);
 }
 //
 // End pre-amble
