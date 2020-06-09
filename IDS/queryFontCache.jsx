@@ -40,7 +40,7 @@ if ($.fileName) {
 }
 else {
     $.global.RUNSCRIPT_DIR = Folder(app.scriptArgs.getValue("RUNSCRIPT_DIR"));
-	$.global.MODULE_DIR = Folder($.global.RUNSCRIPT_DIR);
+    $.global.MODULE_DIR = Folder($.global.RUNSCRIPT_DIR);
 }
 //
 // End pre-amble
@@ -54,16 +54,16 @@ var clearTimer = $.hiresTimer;
 var list = FontCache.getFontListByFontPostscriptName("ArialMT");
 endMicroseconds = $.hiresTimer;
 if (list) {
-	output("ArialMT count = " + list.length + ". Time lapsed (ms)" + Math.floor(endMicroseconds / 1000 + 0.5));
+    output("ArialMT count = " + list.length + ". Time lapsed (ms)" + Math.floor(endMicroseconds / 1000 + 0.5));
 }
 
 clearTimer = $.hiresTimer;
 var list = FontCache.getFontListByFontFamily("Arial");
 endMicroseconds = $.hiresTimer;
 if (list) {
-	output("Arial family count = " + list.length + ". Time lapsed (ms)" + Math.floor(endMicroseconds / 1000 + 0.5));
-	for (var idx = 0; idx < list.length; idx++) {
-		output(list[idx].postscriptName);
-	}
+    output("Arial family count = " + list.length + ". Time lapsed (ms)" + Math.floor(endMicroseconds / 1000 + 0.5));
+    for (var idx = 0; idx < list.length; idx++) {
+        output(list[idx].postscriptName);
+    }
 }
 

@@ -29,8 +29,8 @@
 // ---------------
 
 function output(msg) {
-	var f = File(Folder.temp + "/runscriptOutput.txt");
-	f.open("a");
-	f.writeln(msg);
-	f.close();
+    var f = File(Folder.temp + "/runscriptOutput.txt");
+    f.open("a");
+    f.writeln(msg);
+    f.close();
 }

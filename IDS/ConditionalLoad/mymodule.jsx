@@ -29,7 +29,7 @@
 // ---------------
 
 if (! loadModule) {
-	app.doScript("//@include \"" + $.global.MODULE_DIR + "/loader.jsx\"");
+    app.doScript("//@include \"" + $.global.MODULE_DIR + "/loader.jsx\"");
 }
 
 (function() {
@@ -41,20 +41,20 @@ var LOG = loadModule("log");
 var UTILS = loadModule("utils");
 
 MYMODULE.test = function() {
-	var retVal;
-	
-	LOG.logEntry("MYMODULE.test");
-	
-	LOG.logTrace("Trace");
-	LOG.logNote("Note");
-	LOG.logWarning("Warning");
-	LOG.logError("Error");
-	
-	retVal = 123;
-	
-	LOG.logExit("MYMODULE.test");
-	
-	return retVal;
+    var retVal;
+
+    LOG.logEntry("MYMODULE.test");
+
+    LOG.logTrace("Trace");
+    LOG.logNote("Note");
+    LOG.logWarning("Warning");
+    LOG.logError("Error");
+
+    retVal = 123;
+
+    LOG.logExit("MYMODULE.test");
+
+    return retVal;
 }
 
 })();
