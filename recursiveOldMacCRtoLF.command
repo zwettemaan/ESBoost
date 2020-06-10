@@ -9,14 +9,14 @@ export scriptDir=`pwd`
 # string to grab and remove the UTF-8 BOM.
 
 find . -name "*.jsx" | while read a; do 
-  perl -p -e 's/\r\n|\n|\r/\n/g;s/^\xEF\xBB\xBF//' < "$a" > "$a.clean"
-  diff "$a" "$a.clean" 2>&1 > /dev/null
-  export result=$?
-  if [ $result == "0" ]; then
-    echo "No change in " $a
-    rm "$a.clean"
-  else 
-    echo "Cleaned up " $a
-    mv "$a.clean" "$a"
-  fi
+    perl -p -e 's/\r\n|\n|\r/\n/g;s/^\xEF\xBB\xBF//' < "$a" > "$a.clean"
+    diff "$a" "$a.clean" 2>&1 > /dev/null
+    export result=$?
+    if [ $result == "0" ]; then
+        echo "No change in " $a
+        rm "$a.clean"
+    else 
+        echo "Cleaned up " $a
+        mv "$a.clean" "$a"
+    fi
 done
