@@ -177,37 +177,37 @@ function loadFontCache() {
     while (fontIdx >= 0) {
         try {
             var font = app.fonts.item(fontIdx);
-              var fontEntry = getFontEntry(font);
-              try {
-                  addToList(gFontCache.byFontName, fontEntry.name, fontEntry);
-              }
-              catch (err) {
-              }
-              try {
+            var fontEntry = getFontEntry(font);
+            try {
+                addToList(gFontCache.byFontName, fontEntry.name, fontEntry);
+            }
+            catch (err) {
+            }
+            try {
                 addToList(gFontCache.byFontFamily, fontEntry.fontFamily, fontEntry);
-              }
-              catch (err) {
-              }
-              try {
-            addToList(gFontCache.byFontFullName, fontEntry.fullName, fontEntry);
-              }
-              catch (err) {
-              }
-              try {
-            addToList(gFontCache.byFontFullNameNative, fontEntry.fullNameNative, fontEntry);
-              }
-              catch (err) {
-              }
-              try {
-            addToList(gFontCache.byFontPlatformName, fontEntry.platformName, fontEntry);
-              }
-              catch (err) {
-              }
-              try {
-            addToList(gFontCache.byFontPostscriptName, fontEntry.postscriptName, fontEntry);
-              }
-              catch (err) {
-              }
+            }
+            catch (err) {
+            }
+            try {
+                addToList(gFontCache.byFontFullName, fontEntry.fullName, fontEntry);
+            }
+            catch (err) {
+            }
+            try {
+                addToList(gFontCache.byFontFullNameNative, fontEntry.fullNameNative, fontEntry);
+            }
+            catch (err) {
+            }
+            try {
+                addToList(gFontCache.byFontPlatformName, fontEntry.platformName, fontEntry);
+            }
+            catch (err) {
+            }
+            try {
+                addToList(gFontCache.byFontPostscriptName, fontEntry.postscriptName, fontEntry);
+            }
+            catch (err) {
+            }
         }
         catch (err) {
         }
